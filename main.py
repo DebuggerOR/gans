@@ -83,3 +83,4 @@ if __name__ == '__main__':
 
     generated_samples = generated_samples.detach()
     plt.plot(generated_samples[:, 0], generated_samples[:, 1], ".")
+    plt.show()
