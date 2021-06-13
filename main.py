@@ -1,7 +1,6 @@
 import torch
 from torch import nn
 
-import math
 import matplotlib.pyplot as plt
 
 from discriminator import Discriminator
@@ -16,7 +15,7 @@ def train(train_set, generator, discriminator):
     )
 
     lr = 0.001
-    num_epochs = 300
+    num_epochs = 500
     loss_function = nn.BCELoss()
 
     optimizer_discriminator = torch.optim.Adam(discriminator.parameters(), lr=lr)
@@ -66,7 +65,7 @@ if __name__ == '__main__':
 
     train_data_length = 1024
     train_data = get_data(train_data_length, 'spiral')
-    train_data=train_data.astype(float)
+    train_data = train_data.astype(float)
     train_labels = torch.zeros(train_data_length)
 
     train_set = [
@@ -78,7 +77,7 @@ if __name__ == '__main__':
 
     train(train_set, generator, discriminator)
 
-    latent_space_samples = torch.randn(100, 2)
+    latent_space_samples = torch.randn(1000, 2)
     generated_samples = generator(latent_space_samples)
 
     generated_samples = generated_samples.detach()
